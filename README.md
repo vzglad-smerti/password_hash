@@ -6,7 +6,7 @@
 
 Для начала работы нам необходимо установить наш пакет
 ```
-go get github.comvzglad-smerti/password_hash
+go get github.com/vzglad-smerti/password_hash
 ```
 
 Пример использования
