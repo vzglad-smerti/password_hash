@@ -11,29 +11,36 @@ go get github.com/vzglad-smerti/password_hash
 
 Пример использования
 ```golang
+package main
+
 import (
-  "github.com/v-smerti/password"
-  "log"
+	"log"
+
+	"github.com/vzglad-smerti/password_hash"
 )
 
 func main() {
-    pass_users := "тест"
-		
-		//генерация хеша от пароля
-		hash, err := password.Hash(pass_users)
-		if err != nil {
-			log.Print(err)
-		}
-		//наш хеш
-    log.Print(hash)
-		
-		//Сверим хеш и пароль. Если пароль верный вернёт true в противном случае false. 
-		hash_veriry, err := password.Verify(hash, "testing")
-		if err != nil {
-			log.Print(err)
-		}
-		log.Print(hash_veriry)
+    //пароль который будем проверять
+	password_users := "testing"
+
+    //создадим хеш пароля
+	hash, err := password.Hash(password_users)
+	if err != nil {
+		log.Print(err)
 	}
+
+    //сверим хем и пароль. Если верный пароль то вернёт true в противном случае false
+	hash_veriry, err := password.Verify(hash, password_users)
+	if err != nil {
+		log.Print(err)
+	}
+
+    //выведем хеш в терминал
+	log.Print(hash)
+    //выведем результат проверки в терминал
+	log.Print(hash_veriry)
+
+}
 ```
 
 Настройки хеширования производятся в коде самого пакета
